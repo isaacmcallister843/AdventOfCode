@@ -47,6 +47,8 @@
         "xtree": "cpp",
         "set": "cpp",
         "map": "cpp",
-        "sstream": "cpp"
+        "sstream": "cpp",
+        "algorithm": "cpp",
+        "vector": "cpp"
     }
 }
