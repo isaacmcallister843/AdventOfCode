@@ -21,8 +21,6 @@ int main(){
     elfCal.insert(currentElfCalories);
 
     std::cout<<"Exercise 1: " << *elfCal.rbegin() << std::endl;
-
-    auto r = elfCal.rbegin();
     
     int three_sum = *(elfCal.rbegin()) + *(++elfCal.rbegin()) + *(++++elfCal.rbegin());
     std::cout<<"Exercise 2: " << three_sum << std::endl; 
