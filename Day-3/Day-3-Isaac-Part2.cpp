@@ -18,9 +18,7 @@ std::set<char> GetAllCommonValues(std::string firstString, std::string secondStr
     std::set_intersection(begin(firstIntersection), end(firstIntersection), begin(thirdSet), end(thirdSet), inserter(secondIntersection, end(secondIntersection)));
 
     return secondIntersection;
-   
 }
-
 
 int main(){
     
@@ -34,13 +32,10 @@ int main(){
     int runningTotal = 0; 
     
     while (std::getline(input, line)) {
-        
         threeItems.push_back(line);
         if(size(threeItems)==3){
-            
             std::set<char> commonValues = GetAllCommonValues(threeItems[0], threeItems[1], threeItems[2]);
             std::set<char>::iterator location;  
-
             for(location=commonValues.begin(); location!=commonValues.end(); ++location){
                 char commonValue_ = *location;
                 int ASCII_Code = int(commonValue_);
@@ -48,7 +43,6 @@ int main(){
                 else{priorityValue = ASCII_Code - 96;}
                 runningTotal += priorityValue;
             }
-
             threeItems.clear();
         }       
     }
