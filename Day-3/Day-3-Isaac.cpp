@@ -42,19 +42,11 @@ int main(){
         for(location=compareValues.begin(); location!=compareValues.end(); ++location){
             char commonValue_ = *location;
             int ASCII_Code = int(commonValue_);
-            if(ASCII_Code < 91){
-                priorityValue = ASCII_Code - 38;
-            }
-            else{
-                priorityValue = ASCII_Code - 96;
-            }
-
+            if(ASCII_Code < 91){priorityValue = ASCII_Code - 38;}
+            else{priorityValue = ASCII_Code - 96;}
             runningTotal += priorityValue;
         }
     }
 
     std::cout<< "Part 1: "<< runningTotal<<std::endl; 
-
-    
-
 }

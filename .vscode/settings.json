@@ -49,6 +49,11 @@
         "map": "cpp",
         "sstream": "cpp",
         "algorithm": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "deque": "cpp",
+        "queue": "cpp",
+        "ranges": "cpp",
+        "span": "cpp",
+        "stack": "cpp"
     }
 }
