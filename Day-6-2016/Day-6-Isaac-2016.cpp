@@ -1,4 +1,4 @@
-#include "Day-6-Isaac.hpp"
+#include "Day-6-Isaac-2016.hpp"
 
 void iDontKnowHowToExtendStructs(std::map<char, int> &charsinFistLine, int toInsert){
     bool needNewInsert = true; 
