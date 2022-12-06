@@ -1,7 +1,5 @@
 #include "Day-5-Isaac.hpp"
 
-
-
 std::stack<char> reverseStack(std::stack<char> stackToReverse){
     std::stack<char> tempStack; 
     while(!stackToReverse.empty()){
@@ -12,7 +10,6 @@ std::stack<char> reverseStack(std::stack<char> stackToReverse){
     return tempStack; 
 
 }
-
 int main(){
 
     const int numColumns = 9; 
