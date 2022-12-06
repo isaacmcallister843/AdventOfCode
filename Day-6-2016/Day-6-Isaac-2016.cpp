@@ -19,8 +19,6 @@ int main(){
 
     std::string line; 
     std::ifstream input("Day-6-Input.txt");
-
-    std::vector<char> firstTest; 
     std::map<char, int> maps[8]; 
 
     while (std::getline(input, line)) {
@@ -30,7 +28,6 @@ int main(){
     }
 
     // Part 1 
-
     for (auto map : maps) {
         int largestVal = 0 ; 
         char outputChar; 
