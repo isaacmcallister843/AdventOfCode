@@ -8,7 +8,6 @@ std::stack<char> reverseStack(std::stack<char> stackToReverse){
         tempStack.push(t);
     }
     return tempStack; 
-
 }
 int main(){
 

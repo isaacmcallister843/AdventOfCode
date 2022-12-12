@@ -36,7 +36,6 @@ int main(){
                 
             }
 
-
             if(lineVal > startLine[i].first){
                 startLine[i].first = lineVal;
                 if(tempVec[i+1].second != 1){
