@@ -64,11 +64,6 @@ int main(){
             H_and_T_pos.first.first += freqMap[dir].first;
             H_and_T_pos.first.second  += freqMap[dir].second;
             unitsCount--; 
-            //std::cout << "--Head Moved--" << std::endl;
-
-            //dispGraph(field);
-
-            // Tail Movement 
             int deltaY = H_and_T_pos.second.first - H_and_T_pos.first.first;
             int deltaX = H_and_T_pos.second.second - H_and_T_pos.first.second;
 

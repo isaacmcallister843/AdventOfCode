@@ -2,19 +2,19 @@
 
   
 
-int gcd(int a, int b) 
+uint64_t  gcd(uint64_t  a, uint64_t  b) 
 { 
     if (b == 0) 
         return a; 
     return gcd(b, a % b); 
 } 
   
-int findlcm(std::vector<int> arr, int n) 
+uint64_t  findlcm(std::vector<uint64_t > arr, uint64_t  n) 
 { 
     // Initialize result 
-    int ans = arr[0]; 
+    uint64_t  ans = arr[0]; 
 
-    for (int i = 1; i < n; i++) 
+    for (uint64_t  i = 1; i < n; i++) 
         ans = (((arr[i] * ans)) / 
                 (gcd(arr[i], ans))); 
   
@@ -23,63 +23,58 @@ int findlcm(std::vector<int> arr, int n)
 
 class Monkey{
     public:
-        std::vector <int> items; 
-        std::function<int(int, int)> op;
-        int genDiv; 
+        std::vector <uint64_t > items; 
+        std::function<uint64_t (uint64_t , uint64_t )> op;
+        uint64_t  genDiv; 
 
-        int operationVal; 
-        int divisorTest; 
-        int monkeyInpsectionCounter = 0; 
+        uint64_t  operationVal; 
+        uint64_t  divisorTest; 
+        uint64_t  monkeyInpsectionCounter = 0; 
 
-        std::vector<int> friendlyMonks;  
+        std::vector<uint64_t > friendlyMonks;  
 
-        void recieveItems(int itemToRecieve){
+        void recieveItems(uint64_t  itemToRecieve){
             items.push_back(itemToRecieve);
         }
 
-        void sendItems(int itemToGIve, int MonkeyName, std::vector<Monkey> &allMonks){
+        void sendItems(uint64_t  itemToGIve, uint64_t  MonkeyName, std::vector<Monkey> &allMonks){
             allMonks[MonkeyName].items.push_back(itemToGIve);
-            std::cout<< allMonks[MonkeyName].items[size(allMonks[MonkeyName].items)-1] << std::endl; 
         }
 
-        int inspectOperation(int itemToInspect){
+        uint64_t  inspectOperation(uint64_t  itemToInspect){
             if(operationVal == -100){
                 return itemToInspect * itemToInspect; 
             }
             return op(itemToInspect, operationVal); 
         }
 
-        int getMonkeyToSend(int value, std::vector<Monkey> &allMonks){
+        uint64_t  getMonkeyToSend(uint64_t  value, std::vector<Monkey> &allMonks){
             if((value % divisorTest) == 0){
-                std::cout << "Sending to Monk " << friendlyMonks[0] << std::endl; 
                 return friendlyMonks[0];
             }
             else{
-                std::cout << "Sending to Monk " << friendlyMonks[1] << std::endl; 
                 return friendlyMonks[1];
             }
         }
 
         void inspectItems(std::vector<Monkey> &allMonks){
             while(size(items) > 0){
-                std::cout << "Number of items in inventory: " << size(items) << std::endl; 
-                int inspectedValue = inspectOperation(items[0]) % (genDiv); 
+                uint64_t  inspectedValue = inspectOperation(items[0]) % (genDiv); 
                 items.erase(items.begin());               
-                int monkeyNameToRecieve = getMonkeyToSend(inspectedValue, allMonks); 
+                uint64_t  monkeyNameToRecieve = getMonkeyToSend(inspectedValue, allMonks); 
                 sendItems(inspectedValue, monkeyNameToRecieve, allMonks); 
-                std::cout<< "--------" << std::endl;
                 monkeyInpsectionCounter++; 
             }
         }
 };
 
-int main(){
+int  main(){
 
     std::string line; 
     std::ifstream input("Day-11-Input.txt");
     std::vector<Monkey> monks;
     Monkey* monkT = new Monkey();  
-    std::vector<int> productOfAllDiv; 
+    std::vector<uint64_t > productOfAllDiv; 
     
     bool completeMonk = false; 
 
@@ -90,12 +85,10 @@ int main(){
             std::string lineSplit = line.substr((line.find(':')+1), -1);
             std::stringstream s(lineSplit); 
             std::string segment;
-            std::vector<int> initItems; 
+            std::vector<uint64_t > initItems; 
             while(std::getline(s, segment, ',')){
-                std::cout<<std::stoi(segment) << " "; 
                 initItems.push_back(std::stoi(segment));
             }
-            std::cout << "" << std::endl; 
             monkT->items = initItems; 
         }
         else if(line.find("Operation") != std::string::npos){
@@ -109,10 +102,10 @@ int main(){
             }
             else{
                 if(op_val == "*"){
-                    monkT->op = std::multiplies<int>();
+                    monkT->op = std::multiplies<uint64_t >();
                 }
                 else if(op_val == "+"){
-                    monkT->op = std::plus<int>();
+                    monkT->op = std::plus<uint64_t >();
                 }
                 monkT->operationVal = std::stoi(valWOperator);
             }
@@ -136,37 +129,41 @@ int main(){
         if(completeMonk){
             completeMonk = false;
             monks.push_back(*monkT); 
-            std::cout << "Divisor: " << monkT->divisorTest << " Opertional: " <<  monkT->operationVal << " Is Divisible: " << monkT->friendlyMonks[0];
-            std::cout << " False: " << monkT->friendlyMonks[1] << std::endl; 
             free(monkT); 
             Monkey* monkT = new Monkey();  
         }
         
     }
 
-    int lcm = findlcm(productOfAllDiv, productOfAllDiv.size());
-    std::cout<<lcm<<std::endl;
+    uint64_t  lcm = findlcm(productOfAllDiv, productOfAllDiv.size());
 
-    for(int i = 0; i < size(monks); i++){
+    for(uint64_t  i = 0; i < size(monks); i++){
             monks[i].genDiv = lcm;
     }
 
-    for(int j = 0; j<20; j++){
-        for(int i = 0; i < size(monks); i++){
-            std::cout << i << " ---------" <<std::endl; 
+    for(uint64_t  j = 0; j<10000; j++){
+        std::cout<<j<<std::endl; 
+        for(uint64_t  i = 0; i < size(monks); i++){
             monks[i].inspectItems(monks);
         }
-
-        for(int i = 0; i < size(monks); i++){
-            std::cout << i;
-            for(auto c : monks[i].items){
-                std::cout<<" "<<c; 
-            }
-            std::cout << " : "<< monks[i].monkeyInpsectionCounter;
-            std::cout << " " << std::endl; 
-            
-        }
     }
-    
+
+    int largest = 0; 
+    int secondLargest = 0; 
+
+    for(uint64_t  i = 0; i < size(monks); i++){
+        std::cout << i;
+        for(auto c : monks[i].items){
+            std::cout<<" "<<c; 
+        }
+        std::cout << " : "<< monks[i].monkeyInpsectionCounter;
+        std::cout << " " << std::endl; 
+        if(monks[i].monkeyInpsectionCounter > largest){
+            secondLargest = largest; 
+            largest = monks[i].monkeyInpsectionCounter;
+        }
+            
+    }
+    std::cout<<"Monkey Buisness: " << secondLargest << " " << largest << std::endl; 
 }
 
